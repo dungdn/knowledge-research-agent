@@ -4,6 +4,22 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B02 — LLM Integration (2026-11-23)
+- **Added:**
+  - `ILlmProviderPort` domain interface with normalized types (`LlmMessage`, `LlmResponse`, `LlmToolCallProposal`, `LlmUsage`, `LlmToolDefinition`).
+  - `MockLlmAdapter` for deterministic unit testing with queueing and call inspection.
+  - `GeminiProviderAdapter` integrating `@google/genai` with model `gemini-3.5-flash`.
+  - Structured output generation and runtime schema validation with Zod (`generateStructured`).
+  - Domain error taxonomy (`LlmTimeoutError`, `LlmRateLimitError`, `LlmProviderError`, `LlmSchemaValidationError`).
+  - Global `LlmModule` providing `LLM_PROVIDER_TOKEN`.
+  - Live Gemini API verification script (`scripts/smoke-test-gemini.ts`) verified with real API key.
+  - Learning notes at `docs/learning/B02_LLM_INTEGRATION.md`.
+- **Decisions:**
+  - Added ADR-008: Google Gemini as primary live provider with Port/Adapter architecture.
+- **Tests/verification:**
+  - 15 unit tests passing across Mock adapter, Gemini adapter, and health controller.
+  - Live Gemini API connection verified successfully.
+
 ### B01 — Backend Foundation (2026-11-23)
 - **Added:**
   - Initialized NestJS 10 application with TypeScript and pnpm.

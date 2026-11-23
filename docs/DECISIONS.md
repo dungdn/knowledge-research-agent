@@ -85,3 +85,13 @@ This file is the index/log of meaningful technical and product decisions. Add an
 - **Rationale:** Supports deep learning, manageable scope, and traceable progress.
 - **Consequences:** Progress is deliberate rather than feature-rushed.
 - **Revisit triggers:** Adjust milestone scope if learning or technical dependencies warrant it, recording the change.
+
+## ADR-008 — Google Gemini as Primary LLM Provider with Port/Adapter Abstraction
+- **Status:** accepted
+- **Date:** 2026-11-23
+- **Context / problem:** The agent needs an LLM provider for reasoning, planning, and structured responses. Vendor lock-in must be avoided so core agent logic remains provider-agnostic.
+- **Options considered:** (1) Direct vendor SDK calls in business logic; (2) LangChain/LlamaIndex wrappers; (3) Custom Port/Adapter pattern (`ILlmProviderPort`) with `GeminiProviderAdapter` and `MockLlmAdapter`.
+- **Decision:** Implement `ILlmProviderPort` interface with `GeminiProviderAdapter` (powered by `@google/genai`, default model `gemini-3.5-flash`) as the primary live provider, plus `MockLlmAdapter` for deterministic unit testing.
+- **Rationale:** Preserves provider independence. Normalizes messages, tool definitions, tool-call proposals, and token usage into domain-level types.
+- **Consequences:** Requires normalization layer between provider SDK and agent core; completely isolates domain from third-party breaking changes.
+- **Revisit triggers:** Evaluation of alternative models (e.g. OpenAI GPT-4o, Anthropic Claude, Ollama local) in later milestones.

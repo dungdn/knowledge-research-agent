@@ -21,14 +21,14 @@ Status: done
 - [x] Review and record decisions (ADR-004 updated to accepted)
 
 ## B02 — LLM Integration
-Status: not_started
-- [ ] Select provider/model for first implementation
-- [ ] Define provider interface and normalized response
-- [ ] Implement provider adapter
-- [ ] Add configuration/secrets handling
-- [ ] Add structured output schema validation
-- [ ] Add timeout and error handling
-- [ ] Add tests using a mocked provider
+Status: done
+- [x] Select provider/model for first implementation (Google Gemini `gemini-3.5-flash` via `@google/genai`)
+- [x] Define provider interface and normalized response (`ILlmProviderPort`, `LlmResponse`, `LlmMessage`)
+- [x] Implement provider adapter (`GeminiProviderAdapter` and `MockLlmAdapter`)
+- [x] Add configuration/secrets handling (`GEMINI_API_KEY`, `GEMINI_MODEL`, `.env` isolation)
+- [x] Add structured output schema validation with Zod (`generateStructured<T>`)
+- [x] Add timeout and error handling (`LlmTimeoutError`, `LlmRateLimitError`, `LlmProviderError`, `LlmSchemaValidationError`)
+- [x] Add tests using a mocked provider (Unit tests for Mock & Gemini adapters, live smoke test script verified)
 
 ## B03 — Tool Calling
 Status: not_started
