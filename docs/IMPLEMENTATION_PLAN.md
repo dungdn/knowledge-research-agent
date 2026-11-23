@@ -54,14 +54,14 @@ Status: done
 - [x] Test loop behavior and stop conditions (44 unit/behavior tests passing covering all loop branches)
 
 ## B05 — Planning & Execution
-Status: not_started
-- [ ] Define plan and step schemas
-- [ ] Generate plan from task
-- [ ] Validate plan
-- [ ] Track step status transitions
-- [ ] Execute sequential steps
-- [ ] Record outcomes and errors
-- [ ] Test planner output and execution
+Status: done
+- [x] Define plan and step schemas (`PlanDraftSchema`, `StepDraftSchema`, `PlanStep`, `Plan`)
+- [x] Generate plan from task (`AgentPlannerService` using LLM structured output)
+- [x] Validate plan (`PlanValidator` ensuring DAG validity, unique IDs, and backward-only dependencies)
+- [x] Track step status transitions (`StepStateMachine` and `PlanStateMachine` enforcing strict lifecycle transitions)
+- [x] Execute sequential steps (`PlanExecutorService` executing steps via Agent Orchestrator with prerequisite checks)
+- [x] Record outcomes and errors (capturing step output, tracking skipped steps on failure, recording trace events)
+- [x] Test planner output and execution (60 tests passing across state machine, validator, planner, and executor)
 
 ## B06 — Evaluation & Recovery
 Status: not_started

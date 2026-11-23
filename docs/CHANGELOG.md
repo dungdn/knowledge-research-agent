@@ -4,6 +4,17 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B05 — Planning & Step Execution (2026-11-23)
+- **Added:**
+  - `PlanDraftSchema` and `StepDraftSchema`: Zod schemas for structured plan decomposition (goal, summary, steps with expected tools and dependencies).
+  - `StepStateMachine` & `PlanStateMachine`: Strict finite state machines enforcing validated transitions (`pending` -> `running` -> `completed` / `failed` / `skipped` / `retrying`).
+  - `PlanValidator`: Validates unique step identifiers, prevents self-dependency, and enforces DAG constraints (no forward references or cyclic dependencies).
+  - `AgentPlannerService`: Generates structured execution plans from high-level user goals using LLM structured outputs.
+  - `PlanExecutorService`: Orchestrates sequential step execution, verifies prerequisite dependencies, captures step outputs, and handles step failures and skips.
+  - Extended `AgentEvent` with plan/step telemetry (`plan.created`, `plan.completed`, `step.started`, `step.completed`, `step.failed`).
+  - 4 comprehensive test suites for state machine, validator, planner service, and plan executor (60 tests passing total).
+  - Learning notes at `docs/learning/B05_PLANNING.md`.
+
 ### B04 — Agent Loop (2026-11-23)
 - **Added:**
   - `AgentDecisionSchema`: Discriminated union schema for model decisions (`tool_call`, `final_answer`, `request_clarification`).
