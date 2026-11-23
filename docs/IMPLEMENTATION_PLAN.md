@@ -31,16 +31,16 @@ Status: done
 - [x] Add tests using a mocked provider (Unit tests for Mock & Gemini adapters, live smoke test script verified)
 
 ## B03 — Tool Calling
-Status: not_started
-- [ ] Define tool interface and metadata
-- [ ] Implement registry
-- [ ] Implement tool argument schema validation
-- [ ] Implement tool dispatcher
-- [ ] Normalize tool observations
-- [ ] Add calculator tool
-- [ ] Add mock research/search tool
-- [ ] Add timeout and policy checks
-- [ ] Test success, invalid input, unknown tool, and failure
+Status: done
+- [x] Define tool interface and metadata (`ITool`, `ToolMetadata`, `ToolExecutionContext`)
+- [x] Implement registry (`ToolRegistry` with allowlist filtering and LLM schema conversion)
+- [x] Implement tool argument schema validation using Zod schemas
+- [x] Implement tool dispatcher (`ToolDispatcher` enforcing backend authority and error boundaries)
+- [x] Normalize tool observations (`ToolObservation` with execution timing and error categorization)
+- [x] Add calculator tool (`CalculatorTool` using safe recursive-descent arithmetic parser, no eval)
+- [x] Add mock research/search tool (`MockSearchTool` with technical corpus search and limit control)
+- [x] Add timeout and policy checks (per-tool / per-call timeout and allowedTools allowlist)
+- [x] Test success, invalid input, unknown tool, and failure (34 automated tests passing)
 
 ## B04 — Agent Loop
 Status: not_started

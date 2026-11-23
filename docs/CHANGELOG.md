@@ -4,6 +4,18 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B03 — Tool Calling Foundations (2026-11-23)
+- **Added:**
+  - `ITool` interface and `BaseTool` abstract class integrating metadata, Zod schema, and automatic JSON schema mapping.
+  - `ToolRegistry` service for managing approved tools and generating LLM tool definitions with allowlist filtering.
+  - `ToolDispatcher` service implementing ADR-002 (backend-controlled tool execution): checks existence, allowlist policy, validates arguments with Zod, and executes within strict timeouts.
+  - Standardized `ToolObservation` output format capturing status, data, categorized errors, execution duration, and timestamp.
+  - Domain error classes: `ToolNotFoundError`, `ToolArgumentValidationError`, `ToolExecutionError`, `ToolTimeoutError`, and `ToolPolicyDeniedError`.
+  - `CalculatorTool`: Safe recursive-descent arithmetic evaluator supporting arithmetic operators, parentheses, and decimals without `eval()`.
+  - `MockSearchTool`: Simulated research search engine indexing technical documents.
+  - Unit tests for ToolRegistry, ToolDispatcher, CalculatorTool, and MockSearchTool (34 tests passing total).
+  - Learning notes at `docs/learning/B03_TOOL_CALLING.md`.
+
 ### B02 — LLM Integration (2026-11-23)
 - **Added:**
   - `ILlmProviderPort` domain interface with normalized types (`LlmMessage`, `LlmResponse`, `LlmToolCallProposal`, `LlmUsage`, `LlmToolDefinition`).

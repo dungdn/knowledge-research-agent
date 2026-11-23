@@ -1,2 +1,9 @@
-// Placeholder for Tools module (to be developed in B03)
-export const TOOLS_MODULE_PLACEHOLDER = 'tools';
+export * from './interfaces/tool.interface';
+export * from './errors/tool.errors';
+export * from './base/base.tool';
+export * from './registry/tool.registry';
+export * from './dispatcher/tool.dispatcher';
+export * from './implementations/calculator.tool';
+export * from './implementations/mock-search.tool';
+export * from './utils/zod-to-json-schema';
+export * from './tools.module';
