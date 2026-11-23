@@ -12,6 +12,7 @@ export interface AgentEvent {
     | 'step.started'
     | 'step.completed'
     | 'step.failed'
+    | 'evaluation.completed'
     | 'iteration.started'
     | 'iteration.completed'
     | 'llm.requested'

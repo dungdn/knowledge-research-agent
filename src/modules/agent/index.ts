@@ -11,4 +11,7 @@ export * from './planning/step-state-machine';
 export * from './planning/plan-validator';
 export * from './planning/agent-planner.service';
 export * from './planning/plan-executor.service';
+export * from './evaluation/interfaces/evaluation.types';
+export * from './evaluation/policies/retry.policy';
+export * from './evaluation/agent-evaluator.service';
 export * from './agent.module';

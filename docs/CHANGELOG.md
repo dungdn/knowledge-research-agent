@@ -4,6 +4,18 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B06 — Evaluation, Retry & Replanning (2026-11-23)
+- **Added:**
+  - `EvaluationResult` & `EvaluationMetrics`: Typed contracts defining evaluation outcomes (`continue`, `retry_step`, `replan`, `complete`, `fail`).
+  - `RetryPolicy`: Intelligent error categorization distinguishing transient failures (timeouts, 429, 503) from permanent ones (syntax, missing tools, validation errors), with exponential backoff and jitter.
+  - `AgentEvaluatorService`: Rule-based evaluation engine coordinating step success assessment, transient retries, replan triggering, and terminal failure determination.
+  - Automatic Plan Recovery in `PlanExecutorService`:
+    - Handles transient step failure via controlled retry with backoff.
+    - Handles permanent step failure via automatic plan revision (`replan`), superseding current plan and executing revised plan v2.
+  - Telemetry: Added `evaluation.completed` and `plan.revised` events to `AgentEvent`.
+  - Comprehensive unit and behavior tests covering retry policy, evaluation decision branches, and plan executor recovery (15 test suites, 71 tests passing total).
+  - Learning notes at `docs/learning/B06_EVALUATION_AND_RECOVERY.md`.
+
 ### B05 — Planning & Step Execution (2026-11-23)
 - **Added:**
   - `PlanDraftSchema` and `StepDraftSchema`: Zod schemas for structured plan decomposition (goal, summary, steps with expected tools and dependencies).

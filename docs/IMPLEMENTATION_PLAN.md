@@ -64,14 +64,14 @@ Status: done
 - [x] Test planner output and execution (60 tests passing across state machine, validator, planner, and executor)
 
 ## B06 — Evaluation & Recovery
-Status: not_started
-- [ ] Define evaluation result contract
-- [ ] Implement deterministic completion rules
-- [ ] Implement retry policy
-- [ ] Implement continue/replan/complete/fail decisions
-- [ ] Add maximum retries and budget enforcement
-- [ ] Detect repeated failure/no progress
-- [ ] Test decision branches
+Status: done
+- [x] Define evaluation result contract (`EvaluationResult`, `EvaluationDecision`: continue, retry_step, replan, complete, fail)
+- [x] Implement deterministic completion rules (all steps complete -> complete; step succeeded with remaining steps -> continue)
+- [x] Implement retry policy (`RetryPolicy` with transient error detection, exponential backoff with jitter, step and task budgets)
+- [x] Implement continue/replan/complete/fail decisions (`AgentEvaluatorService` combining metrics, error categorization, and recovery rules)
+- [x] Add maximum retries and budget enforcement (`maxRetriesPerStep`, `maxTotalRetries`, and `maxReplans` strictly enforced)
+- [x] Detect repeated failure/no progress (isolating non-transient failures, preventing blind retry loops)
+- [x] Test decision branches (15 test suites passing with 71 unit/behavior tests covering all recovery and replanning scenarios)
 
 ## B07 — Research Tools
 Status: not_started
