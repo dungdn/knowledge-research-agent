@@ -4,6 +4,17 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B04 — Agent Loop (2026-11-23)
+- **Added:**
+  - `AgentDecisionSchema`: Discriminated union schema for model decisions (`tool_call`, `final_answer`, `request_clarification`).
+  - `AgentRunState` & `AgentBudgetConfig`: Typed structures tracking lifecycle, iterations, tool call counts, timing, and budgets.
+  - `EventRecorder`: In-memory structured telemetry tracking 12 distinct event types (`task.started`, `iteration.started`, `llm.requested`, `decision.made`, `tool.dispatched`, `tool.observed`, etc.).
+  - `NoProgressDetector`: Loop guardrail detecting repeated identical tool calls with same parameters and consecutive tool execution errors.
+  - `AgentPromptBuilder`: Structured system instruction and conversation history builder with prior decisions and observations.
+  - `AgentOrchestratorService`: Core bounded loop orchestrating decision intake, tool dispatching, observation capture, budget enforcement, and stopping conditions.
+  - Comprehensive unit and behavior tests for loop termination, tool use, clarification, budget exhaustion, and no-progress detection (44 tests passing total).
+  - Learning notes at `docs/learning/B04_AGENT_LOOP.md`.
+
 ### B03 — Tool Calling Foundations (2026-11-23)
 - **Added:**
   - `ITool` interface and `BaseTool` abstract class integrating metadata, Zod schema, and automatic JSON schema mapping.

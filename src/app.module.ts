@@ -4,6 +4,7 @@ import { validateEnv } from './shared/config/env.schema';
 import { HealthModule } from './modules/health/health.module';
 import { LlmModule } from './modules/llm/llm.module';
 import { ToolsModule } from './modules/tools/tools.module';
+import { AgentModule } from './modules/agent/agent.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ToolsModule } from './modules/tools/tools.module';
     HealthModule,
     LlmModule,
     ToolsModule,
+    AgentModule,
   ],
 })
 export class AppModule {}

@@ -43,15 +43,15 @@ Status: done
 - [x] Test success, invalid input, unknown tool, and failure (34 automated tests passing)
 
 ## B04 — Agent Loop
-Status: not_started
-- [ ] Define decision schema
-- [ ] Define Agent run state and event types
-- [ ] Implement iteration loop
-- [ ] Handle tool-call decision and final-answer decision
-- [ ] Record observable decision summaries
-- [ ] Enforce iteration and tool-call budgets
-- [ ] Detect no-progress/repeated actions
-- [ ] Test loop behavior and stop conditions
+Status: done
+- [x] Define decision schema (`AgentDecisionSchema` discriminated union: `tool_call`, `final_answer`, `request_clarification`)
+- [x] Define Agent run state and event types (`AgentRunState`, `AgentBudgetConfig`, `AgentEvent`)
+- [x] Implement iteration loop (`AgentOrchestratorService.run` loop with context builder)
+- [x] Handle tool-call decision and final-answer decision (dispatching tools, capturing observations, terminating on answer)
+- [x] Record observable decision summaries (rationales logged and captured in `decision.made` events)
+- [x] Enforce iteration and tool-call budgets (hard limits for `maxIterations`, `maxToolCalls`, and `maxTotalDurationMs`)
+- [x] Detect no-progress/repeated actions (`NoProgressDetector` detects repeated identical tool calls and consecutive failures)
+- [x] Test loop behavior and stop conditions (44 unit/behavior tests passing covering all loop branches)
 
 ## B05 — Planning & Execution
 Status: not_started
