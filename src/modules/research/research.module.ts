@@ -6,6 +6,8 @@ import { TavilySearchAdapter } from './adapters/tavily-search.adapter';
 import { WebSearchTool } from './tools/web-search.tool';
 import { PageReaderTool } from './tools/page-reader.tool';
 import { ToolRegistry } from '../tools/registry/tool.registry';
+import { ResearchSynthesizerService } from './services/research-synthesizer.service';
+import { ResearchWorkflowService } from './services/research-workflow.service';
 
 @Global()
 @Module({
@@ -25,11 +27,15 @@ import { ToolRegistry } from '../tools/registry/tool.registry';
     },
     WebSearchTool,
     PageReaderTool,
+    ResearchSynthesizerService,
+    ResearchWorkflowService,
   ],
   exports: [
     SEARCH_PROVIDER_TOKEN,
     WebSearchTool,
     PageReaderTool,
+    ResearchSynthesizerService,
+    ResearchWorkflowService,
   ],
 })
 export class ResearchModule implements OnModuleInit {

@@ -84,13 +84,13 @@ Status: done
 - [x] Test empty, malformed, blocked, and failed retrievals (18 test suites, 87 unit/integration tests passing total)
 
 ## B08 — Research Workflow
-Status: not_started
-- [ ] Define research report schema
-- [ ] Map claims/findings to sources
-- [ ] Identify gaps and conflicts
-- [ ] Produce report and source list
-- [ ] Build evaluation tasks and rubric
-- [ ] Run manual/automated quality review
+Status: done
+- [x] Define research report schema (`ResearchReportSchema` with executive summary, findings, comparisons, gaps, conflicts, limitations, and citations)
+- [x] Map claims/findings to sources (every claim cites verified source URLs, with post-synthesis verification)
+- [x] Identify gaps and conflicts (`evidenceGaps` and `conflictingInformation` structures disclosing uncertainty)
+- [x] Produce report and source list (`ResearchSynthesizerService` with GitHub Flavored Markdown renderer and clickable links)
+- [x] Build evaluation tasks and rubric (`ResearchBenchmark` with 4-pillar 100-point scoring rubric)
+- [x] Run manual/automated quality review (21 test suites, 92 unit/integration tests passing covering end-to-end workflow)
 
 ## B09 — Persistence & History
 Status: not_started

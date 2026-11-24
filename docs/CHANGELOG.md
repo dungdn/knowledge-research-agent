@@ -4,6 +4,17 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B08 — End-to-End Research Workflow (2026-11-24)
+- **Added:**
+  - `ResearchReportSchema`: Comprehensive Zod schema enforcing executive summary, key findings, claim-to-source mapping, comparisons, conflicting viewpoints, evidence gaps, and methodology limitations.
+  - `ResearchSynthesizerService`: Synthesis engine aggregating plan step execution outputs and collected web evidence into structured, verifiable reports.
+  - Markdown Renderer: Automatically formats reports into clean GitHub Flavored Markdown with confidence badges and clickable markdown source links.
+  - Citation Integrity Verification: Validates that all URLs cited by the model strictly match the pool of collected sources, preventing hallucinated citations.
+  - `ResearchWorkflowService`: Full end-to-end orchestrator tying goal intake $\to$ plan generation $\to$ self-healing step execution $\to$ evidence collection $\to$ synthesis $\to$ markdown output.
+  - `ResearchBenchmark`: 100-point evaluation rubric assessing structural completeness, evidence traceability, uncertainty disclosure, and source metadata richness.
+  - Comprehensive unit and integration tests across synthesis, workflow orchestration, and benchmark evaluations (21 test suites, 92 tests passing total).
+  - Learning notes at `docs/learning/B08_RESEARCH_WORKFLOW.md`.
+
 ### B07 — Research Tools (2026-11-23)
 - **Added:**
   - `SourceEvidence`, `WebSearchResult`, and `ExtractedPageContent` data models for structured research evidence.
