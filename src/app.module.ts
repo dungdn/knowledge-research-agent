@@ -5,6 +5,7 @@ import { HealthModule } from './modules/health/health.module';
 import { LlmModule } from './modules/llm/llm.module';
 import { ToolsModule } from './modules/tools/tools.module';
 import { AgentModule } from './modules/agent/agent.module';
+import { ResearchModule } from './modules/research/research.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AgentModule } from './modules/agent/agent.module';
     HealthModule,
     LlmModule,
     ToolsModule,
+    ResearchModule,
     AgentModule,
   ],
 })

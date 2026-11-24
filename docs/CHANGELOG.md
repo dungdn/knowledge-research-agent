@@ -4,6 +4,17 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B07 — Research Tools (2026-11-23)
+- **Added:**
+  - `SourceEvidence`, `WebSearchResult`, and `ExtractedPageContent` data models for structured research evidence.
+  - `ISearchProviderAdapter` port with `MockSearchAdapter` and `TavilySearchAdapter`.
+  - `WebSearchTool`: Approved tool querying external search engines, normalizing domain and snippet metadata, and deduplicating URLs.
+  - `UrlSecurityValidator`: Enterprise-grade SSRF protection blocking local/private network ranges (`127.0.0.0/8`, `10.0.0.0/8`, `192.168.0.0/16`, `172.16-31.0.0`), IPv6 loopback (`::1`), cloud metadata endpoints (`169.254.169.254`), and non-HTTP protocols.
+  - `PageReaderTool`: Safe web page text extractor stripping script, style, navigation, and SVG tags, decoding HTML entities, and delimiting untrusted external text with prompt-injection boundary tags (`[EXTERNAL_UNTRUSTED_CONTENT]`).
+  - `ResearchModule` integrated into `AppModule`, automatically registering research tools into `ToolRegistry`.
+  - Comprehensive unit tests covering search normalization, URL deduplication, HTML sanitization, SSRF prevention, and error handling (18 test suites, 87 tests passing total).
+  - Learning notes at `docs/learning/B07_RESEARCH_TOOLS.md`.
+
 ### B06 — Evaluation, Retry & Replanning (2026-11-23)
 - **Added:**
   - `EvaluationResult` & `EvaluationMetrics`: Typed contracts defining evaluation outcomes (`continue`, `retry_step`, `replan`, `complete`, `fail`).

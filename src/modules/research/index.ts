@@ -1,2 +1,8 @@
-// Placeholder for Research module (to be developed in B07-B08)
-export const RESEARCH_MODULE_PLACEHOLDER = 'research';
+export * from './interfaces/evidence.types';
+export * from './interfaces/search-provider.port';
+export * from './security/url-security.validator';
+export * from './adapters/mock-search.adapter';
+export * from './adapters/tavily-search.adapter';
+export * from './tools/web-search.tool';
+export * from './tools/page-reader.tool';
+export * from './research.module';

@@ -74,14 +74,14 @@ Status: done
 - [x] Test decision branches (15 test suites passing with 71 unit/behavior tests covering all recovery and replanning scenarios)
 
 ## B07 — Research Tools
-Status: not_started
-- [ ] Select search provider
-- [ ] Implement search tool adapter
-- [ ] Implement URL/page reader
-- [ ] Normalize source records
-- [ ] Add evidence/source metadata
-- [ ] Add summarization
-- [ ] Test empty, malformed, blocked, and failed retrievals
+Status: done
+- [x] Select search provider (Port/Adapter supporting Tavily & Mock search provider)
+- [x] Implement search tool adapter (`WebSearchTool` with `ISearchProviderAdapter`, URL deduplication)
+- [x] Implement URL/page reader (`PageReaderTool` with HTML text extraction, script/style stripping)
+- [x] Normalize source records (`SourceEvidence`, `WebSearchResult`, `ExtractedPageContent` with domain & timestamp metadata)
+- [x] Add evidence/source metadata (domain extraction, reliability score, character count, truncated flags)
+- [x] Add safety & SSRF guardrails (`UrlSecurityValidator` blocking private IPs, cloud metadata endpoints, loopback, and prompt-injection delimiter wrapping)
+- [x] Test empty, malformed, blocked, and failed retrievals (18 test suites, 87 unit/integration tests passing total)
 
 ## B08 — Research Workflow
 Status: not_started
