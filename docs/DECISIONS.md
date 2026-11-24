@@ -56,15 +56,21 @@ This file is the index/log of meaningful technical and product decisions. Add an
 - **Consequences:** All boundary data must have Zod schemas; guarantees runtime type safety before passing data into domain/agent logic.
 - **Revisit triggers:** Evidence of major performance bottlenecks or incompatible provider schemas.
 
-## ADR-005 — PostgreSQL for Task and Execution Persistence
-- **Status:** proposed
-- **Date:** 2026-11-22
-- **Context / problem:** Task history, plans, steps, events, tool executions, and reports need durable storage.
-- **Options considered:** (1) In-memory only; (2) relational database; (3) document database.
-- **Decision:** Proposed PostgreSQL for durable persistence when B09 begins; Basic may use in-memory state until persistence work.
-- **Rationale:** Relational consistency and queryability suit task lifecycle and execution records; JSON fields can accommodate variable payloads carefully.
-- **Consequences:** Requires schema/migrations and operational setup; not needed for every early exercise.
-- **Revisit triggers:** B09 data modeling or changed requirements for scale/query patterns.
+## ADR-005 — Relational & JSONB Hybrid Architecture for Task & Execution Persistence
+- **Status:** accepted
+- **Date:** 2026-11-24
+- **Context / problem:** Tasks, execution plans, step outputs, agent telemetry events, and synthesized research reports need durable storage with strong queryability and auditability.
+- **Options considered:**
+  1. Pure In-Memory storage (fast for dev/testing, but volatile and unsuitable for production).
+  2. Document database (e.g. MongoDB; easy for variable payloads, but weak consistency guarantees for task lifecycle state machines and transactional updates).
+  3. Relational + JSONB hybrid in PostgreSQL via Hexagonal Repository Ports (`ITaskRepository`, `IEventRepository`).
+- **Decision:** Use a Port/Adapter architecture with `ITaskRepository` and `IEventRepository`. Implement an in-memory adapter (`InMemoryTaskRepository`, `InMemoryEventRepository`) with deep cloning and full filtering/pagination for unit/E2E testing and standalone execution, accompanied by a production-ready PostgreSQL DDL migration script (`001_initial_schema.sql`).
+- **Rationale:**
+  - Preserves Clean Architecture boundaries: Domain services (`TasksService`, `ResearchWorkflowService`) depend solely on repository interfaces, completely decouples from any specific database driver or ORM.
+  - Hybrid relational design: Root columns (`id`, `goal`, `status`, `created_at`, `updated_at`, `completed_at`) are strongly typed and indexed in PostgreSQL for fast queries, filtering, and foreign key integrity (`ON DELETE CASCADE`), while complex agent payloads (`budget_config`, `metrics`, `plan`, `report`) use PostgreSQL `JSONB` for schema evolution without breaking migrations.
+  - Append-only event auditing aligns with ADR-006: Events table stores timestamped chronological telemetry streams (`agent_events`).
+- **Consequences:** Provides zero-dependency in-memory agility during development while providing the exact DDL schema required when provisioning PostgreSQL in production (B10/Production).
+- **Revisit triggers:** Need for distributed event streaming (Kafka/RabbitMQ) or vector indexing for long-term memory in Advanced phases.
 
 ## ADR-006 — Observable Decision Summaries, Not Hidden Chain-of-Thought
 - **Status:** accepted

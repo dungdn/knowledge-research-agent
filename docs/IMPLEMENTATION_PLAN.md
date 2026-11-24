@@ -93,13 +93,13 @@ Status: done
 - [x] Run manual/automated quality review (21 test suites, 92 unit/integration tests passing covering end-to-end workflow)
 
 ## B09 — Persistence & History
-Status: not_started
-- [ ] Select persistence library/ORM and document decision
-- [ ] Create migrations and tables
-- [ ] Persist tasks/plans/steps/tool executions/events/reports
-- [ ] Add query endpoints and pagination
-- [ ] Define transaction and consistency rules
-- [ ] Test persistence and status transitions
+Status: completed
+- [x] Select persistence library/ORM and document decision (ADR-005 accepted: Port/Adapter pattern with relational + JSONB schema)
+- [x] Create migrations and tables (`src/modules/persistence/migrations/001_initial_schema.sql` defining tasks, plans, plan_steps, agent_events, research_reports)
+- [x] Persist tasks/plans/steps/tool executions/events/reports (`ITaskRepository`, `IEventRepository`, `InMemoryTaskRepository`, `InMemoryEventRepository`)
+- [x] Add query endpoints and pagination (`POST /api/v1/tasks`, `GET /api/v1/tasks`, `GET /api/v1/tasks/:id`, `GET /api/v1/tasks/:id/events`, `GET /api/v1/tasks/:id/report`, `POST /api/v1/tasks/:id/cancel`)
+- [x] Define transaction and consistency rules (`TaskStateMachine` enforcing non-reversible terminal states: completed, failed, cancelled)
+- [x] Test persistence and status transitions (26 unit/integration suites, 127 tests passing + 2 E2E suites passing)
 
 ## B10 — Basic Phase Completion
 Status: not_started

@@ -1,2 +1,8 @@
-// Placeholder for Tasks module (to be developed in B05 & B09)
-export const TASKS_MODULE_PLACEHOLDER = 'tasks';
+export * from './interfaces/task.types';
+export * from './interfaces/task-repository.port';
+export * from './lifecycle/task-state-machine';
+export * from './repositories/in-memory-task.repository';
+export * from './repositories/in-memory-event.repository';
+export * from './services/tasks.service';
+export * from './controllers/tasks.controller';
+export * from './tasks.module';

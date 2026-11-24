@@ -6,6 +6,7 @@ import { LlmModule } from './modules/llm/llm.module';
 import { ToolsModule } from './modules/tools/tools.module';
 import { AgentModule } from './modules/agent/agent.module';
 import { ResearchModule } from './modules/research/research.module';
+import { TasksModule } from './modules/tasks/tasks.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ResearchModule } from './modules/research/research.module';
     ToolsModule,
     ResearchModule,
     AgentModule,
+    TasksModule,
   ],
 })
 export class AppModule {}

@@ -4,6 +4,24 @@ All notable project changes are recorded here. Keep entries concise and grouped 
 
 ## [Unreleased]
 
+### B09 — Persistence & History (2026-11-24)
+- **Added:**
+  - `ITaskRepository` & `IEventRepository`: Hexagonal domain ports defining storage, pagination, filtering, and audit log retrieval.
+  - `InMemoryTaskRepository` & `InMemoryEventRepository`: Thread-safe, deep-cloning in-memory adapters for fast testing and standalone operation.
+  - PostgreSQL Relational + JSONB Schema DDL (`src/modules/persistence/migrations/001_initial_schema.sql`) defining `tasks`, `plans`, `plan_steps`, `agent_events`, and `research_reports` tables with foreign keys and cascade deletions.
+  - `TaskStateMachine`: Finite State Machine enforcing task lifecycle transitions (`queued` $\to$ `running` $\to$ `completed` | `failed` | `cancelled`) and guarding terminal state invariants.
+  - `TasksService`: Application service managing task creation, async execution via `ResearchWorkflowService`, event synchronization, report queries, and cancellation.
+  - `TasksController`: REST API endpoints under `/api/v1/tasks` with full Swagger annotations:
+    - `POST /api/v1/tasks`: Submit and run research task.
+    - `GET /api/v1/tasks`: List tasks with status filtering and pagination.
+    - `GET /api/v1/tasks/:id`: Retrieve task detail.
+    - `GET /api/v1/tasks/:id/events`: Retrieve chronological audit telemetry events.
+    - `GET /api/v1/tasks/:id/report`: Retrieve synthesized research report and markdown artifact.
+    - `POST /api/v1/tasks/:id/cancel`: Cancel an active or queued task.
+  - Comprehensive unit and E2E tests: 26 unit test suites (127 tests) and 2 E2E test suites passing 100%.
+  - Learning notes at `docs/learning/B09_PERSISTENCE.md`.
+  - Updated ADR-005 in `docs/DECISIONS.md` to accepted.
+
 ### B08 — End-to-End Research Workflow (2026-11-24)
 - **Added:**
   - `ResearchReportSchema`: Comprehensive Zod schema enforcing executive summary, key findings, claim-to-source mapping, comparisons, conflicting viewpoints, evidence gaps, and methodology limitations.

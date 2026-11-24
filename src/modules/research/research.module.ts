@@ -8,9 +8,11 @@ import { PageReaderTool } from './tools/page-reader.tool';
 import { ToolRegistry } from '../tools/registry/tool.registry';
 import { ResearchSynthesizerService } from './services/research-synthesizer.service';
 import { ResearchWorkflowService } from './services/research-workflow.service';
+import { AgentModule } from '../agent/agent.module';
 
 @Global()
 @Module({
+  imports: [AgentModule],
   providers: [
     MockSearchAdapter,
     TavilySearchAdapter,
