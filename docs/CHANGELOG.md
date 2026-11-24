@@ -2,7 +2,23 @@
 
 All notable project changes are recorded here. Keep entries concise and grouped by milestone. This project has not yet begun implementation; the initial entries record planning documents only.\n
 
-## [Unreleased]
+## [0.1.0-basic] - 2026-11-24
+
+### B10 — Basic Phase Completion & Phase Gate
+- **Added:**
+  - `Phase 1 (Basic) Acceptance Gate Test Suite` (`src/modules/tasks/acceptance/basic-phase.acceptance.spec.ts`) validating all 7 criteria from `TESTING_STRATEGY.md` Section 7:
+    1. Clear module responsibilities and verified boundaries.
+    2. Multi-step research completion with structured findings.
+    3. Chronological trace event logging across all execution phases.
+    4. Bounded autonomy, error handling, and immutable terminal state machine invariants.
+    5. Anti-hallucination source citation and uncertainty disclosures.
+    6. Persistence and retrieval of tasks, plans, events, and reports.
+    7. Overall quality benchmark score $\ge 80/100$ via `ResearchBenchmark`.
+  - `docs/KNOWN_LIMITATIONS.md`: Comprehensive review of architectural trade-offs (in-memory adapter default, sequential DAG planning, short-term session memory, single coordinator, single-process execution).
+  - Root `README.md`: Professional project documentation featuring architecture diagrams, quickstart guide, API documentation, testing instructions, and roadmap overview.
+  - Learning notes at `docs/learning/B10_BASIC_PHASE_COMPLETION.md`.
+  - Updated `docs/ROADMAP.md` and `docs/IMPLEMENTATION_PLAN.md` with all Phase 1 milestones (B01–B10) completed.
+  - Prepared release tag `v0.1.0-basic`.
 
 ### B09 — Persistence & History (2026-11-24)
 - **Added:**

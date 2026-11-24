@@ -102,11 +102,11 @@ Status: completed
 - [x] Test persistence and status transitions (26 unit/integration suites, 127 tests passing + 2 E2E suites passing)
 
 ## B10 — Basic Phase Completion
-Status: not_started
-- [ ] Acceptance tests pass
-- [ ] Review known limitations
-- [ ] Update all project docs
-- [ ] Create milestone/tag
+Status: completed
+- [x] Acceptance tests pass (`src/modules/tasks/acceptance/basic-phase.acceptance.spec.ts` 5/5 criteria passed 100%)
+- [x] Review known limitations (`docs/KNOWN_LIMITATIONS.md` published detailing persistence, memory, and single-agent constraints)
+- [x] Update all project docs (`README.md`, `ROADMAP.md`, `CHANGELOG.md`, `B10_BASIC_PHASE_COMPLETION.md`)
+- [x] Create milestone/tag (`v0.1.0-basic` release prepared)
 
 ## Advanced
 Status: not_started

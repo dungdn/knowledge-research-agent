@@ -4,88 +4,88 @@
 **Outcome:** a bounded, observable research Agent that works end-to-end.
 
 ### B01 — Backend Foundation
-- [ ] Confirm Node.js/npm versions and package manager
-- [ ] Create NestJS project and review its conventions
-- [ ] Define module boundaries and initial folder structure
-- [ ] Environment configuration and validation
-- [ ] Logger and exception handling baseline
-- [ ] Health endpoint
-- [ ] Jest setup and baseline tests
-- [ ] Docker development setup (optional early, required before phase close)
-- [ ] Document commands and architecture
+- [x] Confirm Node.js/npm versions and package manager
+- [x] Create NestJS project and review its conventions
+- [x] Define module boundaries and initial folder structure
+- [x] Environment configuration and validation
+- [x] Logger and exception handling baseline
+- [x] Health endpoint
+- [x] Jest setup and baseline tests
+- [x] Docker development setup (optional early, required before phase close)
+- [x] Document commands and architecture
 
 ### B02 — LLM Integration
-- [ ] Choose initial LLM provider/model and record decision
-- [ ] Build provider interface and adapter
-- [ ] Configure secrets and model settings
-- [ ] Basic prompt/message structures
-- [ ] Structured output and schema validation
-- [ ] Timeout, rate-limit, provider-error handling
-- [ ] Unit tests with mocked provider
+- [x] Choose initial LLM provider/model and record decision
+- [x] Build provider interface and adapter
+- [x] Configure secrets and model settings
+- [x] Basic prompt/message structures
+- [x] Structured output and schema validation
+- [x] Timeout, rate-limit, provider-error handling
+- [x] Unit tests with mocked provider
 
 ### B03 — Tool Calling Foundations
-- [ ] Define Tool contract (name, description, input schema, execute)
-- [ ] Build Tool Registry
-- [ ] Validate tool names and arguments
-- [ ] Normalize success/error outputs into observations
-- [ ] Implement safe starter tools (e.g., calculator, mock search)
-- [ ] Tool timeout and execution limits
-- [ ] Tests for registry, validation, tool success/failure
+- [x] Define Tool contract (name, description, input schema, execute)
+- [x] Build Tool Registry
+- [x] Validate tool names and arguments
+- [x] Normalize success/error outputs into observations
+- [x] Implement safe starter tools (e.g., calculator, mock search)
+- [x] Tool timeout and execution limits
+- [x] Tests for registry, validation, tool success/failure
 
 ### B04 — Agent Loop
-- [ ] Define agent iteration and lifecycle
-- [ ] Send task/context/tool descriptions to model
-- [ ] Parse model decisions (tool call, answer, continue/finish)
-- [ ] Execute selected tool and feed observation back
-- [ ] Enforce max iterations and budget
-- [ ] Record event timeline
-- [ ] Test normal finish, tool use, malformed decision, and limit reached
+- [x] Define agent iteration and lifecycle
+- [x] Send task/context/tool descriptions to model
+- [x] Parse model decisions (tool call, answer, continue/finish)
+- [x] Execute selected tool and feed observation back
+- [x] Enforce max iterations and budget
+- [x] Record event timeline
+- [x] Test normal finish, tool use, malformed decision, and limit reached
 
 ### B05 — Planning & Step Execution
-- [ ] Define plan/step types and statuses
-- [ ] Generate structured plan
-- [ ] Execute steps in order for first version
-- [ ] Capture step outcomes and dependencies
-- [ ] Track completed/pending/failed steps
-- [ ] Test plan validation and step transitions
+- [x] Define plan/step types and statuses
+- [x] Generate structured plan
+- [x] Execute steps in order for first version
+- [x] Capture step outcomes and dependencies
+- [x] Track completed/pending/failed steps
+- [x] Test plan validation and step transitions
 
 ### B06 — Evaluation, Retry & Replanning
-- [ ] Add rule-based evaluation criteria
-- [ ] Distinguish retry step, continue plan, replan, complete, and fail
-- [ ] Retry policy with limits/backoff where appropriate
-- [ ] Detect repeated/no-progress loops
-- [ ] Add evaluator model call only where rules are insufficient
-- [ ] Test all decision branches and budget boundaries
+- [x] Add rule-based evaluation criteria
+- [x] Distinguish retry step, continue plan, replan, complete, and fail
+- [x] Retry policy with limits/backoff where appropriate
+- [x] Detect repeated/no-progress loops
+- [x] Add evaluator model call only where rules are insufficient
+- [x] Test all decision branches and budget boundaries
 
 ### B07 — Research Tools
-- [ ] Implement web search adapter (choose provider and record ADR)
-- [ ] Implement page reading/extraction tool
-- [ ] Normalize source metadata: title, URL, retrieval time, snippet/content
-- [ ] Source deduplication and basic quality metadata
-- [ ] Summarization tool or service
-- [ ] Respect provider policies, access controls, and content limits
-- [ ] Test tool failures, empty results, malformed URLs, and source handling
+- [x] Implement web search adapter (choose provider and record ADR)
+- [x] Implement page reading/extraction tool
+- [x] Normalize source metadata: title, URL, retrieval time, snippet/content
+- [x] Source deduplication and basic quality metadata
+- [x] Summarization tool or service
+- [x] Respect provider policies, access controls, and content limits
+- [x] Test tool failures, empty results, malformed URLs, and source handling
 
 ### B08 — End-to-End Research Task
-- [ ] Run research tasks across multiple sources
-- [ ] Collect evidence per finding
-- [ ] Identify missing/conflicting evidence
-- [ ] Produce structured report
-- [ ] Include source list and uncertainty/limitations
-- [ ] Build a small evaluation task set and assess output quality
+- [x] Run research tasks across multiple sources
+- [x] Collect evidence per finding
+- [x] Identify missing/conflicting evidence
+- [x] Produce structured report
+- [x] Include source list and uncertainty/limitations
+- [x] Build a small evaluation task set and assess output quality
 
 ### B09 — Persistence & History
-- [ ] Define database schema and migrations
-- [ ] Persist tasks, plans, steps, tool executions, events, and report
-- [ ] Add task detail/history endpoints
-- [ ] Handle transaction boundaries and status transitions
-- [ ] Test persistence and retrieval
+- [x] Define database schema and migrations
+- [x] Persist tasks, plans, steps, tool executions, events, and report
+- [x] Add task detail/history endpoints
+- [x] Handle transaction boundaries and status transitions
+- [x] Test persistence and retrieval
 
 ### B10 — Basic Phase Gate
-- [ ] Complete acceptance criteria in TESTING_STRATEGY.md
-- [ ] Review architecture and known limitations
-- [ ] Update docs and changelog
-- [ ] Tag a Basic milestone release
+- [x] Complete acceptance criteria in TESTING_STRATEGY.md
+- [x] Review architecture and known limitations
+- [x] Update docs and changelog
+- [x] Tag a Basic milestone release
 
 ## Phase 2: ADVANCED — Build a More Adaptive Agent
 - [ ] Dynamic planning based on observations
